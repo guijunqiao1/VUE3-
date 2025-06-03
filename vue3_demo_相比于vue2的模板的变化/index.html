@@ -8,7 +8,16 @@
   </head>
   <body>
     <div id="app"></div>
-    <!-- <script type="module" src="/src/main.ts"></script> -->
-    <script type="module" src="/src/main/main.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+    <!-- <script type="module" src="/src/main/main.js"></script> -->
   </body>
 </html>
+
+
+<!-- 此处做出补充:
+（1）首先使用vuex中的store的文件内容进行全局的内容管理，所有组件共享同一个仓库;
+（2）其次使用global_state完成多个组件共享同一个仓库(本质为共享同一个响应式reactive变量),也可以自定义成所有组件共用一个仓库;
+（3）最后使用provide_inject在上述的基础上能够实现多个vue应用之间使用同一个库以及不同的库，在单个vue应用的方面同样能够实现上述的两种
+情况下的效果,而上述两种情况只能在同一个vue应用完美的使用库，而针对多个vue应用的情况下则只能使用上不同的库,而使用provide_inject
+能够实现多个应用共用同一个库的原因在于能够直接向着上层注入内容，同时取出的时候也是向着最上层进行获取;而多个应用下使用不同库的原因在于本身库中的内容是没有缓存的，所以在初始化的时候是固定的值
+也就导致了使用的库的内容的起点始终固定，也就无法实现多个vue应用中的数据共享了-->
